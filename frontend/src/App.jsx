@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import IndexPage from './components/Index';
+import CreateProduct from './components/CreateProduct';
+import Shop from './components/Shop';
+import Cart from './components/Cart';
+import OwnerLogin from './components/OwnerLogin';
+import Admin from './components/Admin';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<IndexPage/>} />
+        <Route path="/create-product" element={<CreateProduct/>} />
+        <Route path="/shop" element={<Shop success={[]} products={[]} />} /> {/* Add your actual data here */}
+        <Route path="/cart" element={<Cart user={{}} />} />
+        <Route path="/owner-login" element={<OwnerLogin />} />
+        <Route path="/admin" element={<Admin />} />
+
+
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
